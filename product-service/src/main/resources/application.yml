@@ -1,0 +1,17 @@
+#server: # потр развертывания приложения для работы в Idie
+  #port: 8000 # потр развертывания приложения для работы в Idie
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://productsDB:5432/productsDB # для доступа к БД в рамках docker
+    #url: jdbc:postgresql://localhost:1112/productsDB  # для работы с БД через приложение
+    username: user
+    password: root
+jwt:
+  secret: NDQ1ZjAzNjQtMzViZi00MDRjLTljZjQtNjNjYWIyZTU5ZDYw
+  issuer: Fitness_Studio_BUL
