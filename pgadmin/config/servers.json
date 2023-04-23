@@ -1,0 +1,31 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "usersDB",
+      "Group": "Server Group 1",
+      "Port": 5432,
+      "Username": "user",
+      "Host": "usersDB",
+      "SSLMode": "prefer",
+      "MaintenanceDB": "postgres"
+    },
+    "2": {
+      "Name": "productsDB",
+      "Group": "Server Group 1",
+      "Port": 5432,
+      "Username": "user",
+      "Host": "productsDB",
+      "SSLMode": "prefer",
+      "MaintenanceDB": "postgres"
+    },
+    "3": {
+      "Name": "auditDB",
+      "Group": "Server Group 1",
+      "Port": 5432,
+      "Username": "user",
+      "Host": "auditDB",
+      "SSLMode": "prefer",
+      "MaintenanceDB": "postgres"
+    }
+  }
+}

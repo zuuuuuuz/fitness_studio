@@ -1,0 +1,18 @@
+#server: # потр развертывания приложения для работы в Idie
+  #port: 7000 # потр развертывания приложения для работы в Idie
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://auditDB:5432/auditDB # для доступа к БД в рамках docker
+    #url: jdbc:postgresql://localhost:1113/auditDB  # для работы с БД через приложение
+    username: user
+    password: root
+    #url: jdbc:postgresql://localhost:5432/orders  # для работы с БД через приложение
+    #username: postgres
+    #password: postgres
+
