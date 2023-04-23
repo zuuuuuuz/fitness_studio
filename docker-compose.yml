@@ -1,0 +1,91 @@
+version: '3.5'
+services:
+  usersDB:
+    build: usersDB
+    image: users_postgresql:1.0.0
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: usersDB
+    ports:
+      - "1111:5432"
+    networks:
+      - fitness_ntwrk
+  auditDB:
+    build: auditDB
+    image: audits_postgresql:1.0.0
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: auditDB
+    ports:
+      - "1113:5432"
+    networks:
+      - fitness_ntwrk
+  productsDB:
+    build: productsDB
+    image: products_postgresql:1.0.0
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: productsDB
+    ports:
+      - "1112:5432"
+    networks:
+      - fitness_ntwrk
+  pgadmin:
+    build: pgadmin
+    image: fitness_pgadmin:1.0.0
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "82:80"
+    networks:
+      - fitness_ntwrk
+  swagger-ui:
+    build: swagger-ui
+    image: fitness_swagger-ui:1.0.0
+    ports:
+      - "81:8080"
+    networks:
+      - fitness_ntwrk
+
+  product-service:
+    build: product-service
+    image: fitness_product-service:1.0.0
+    networks:
+      - fitness_ntwrk
+
+  user-service:
+    build: user-service
+    image: fitness_user-service:1.0.0
+    networks:
+      - fitness_ntwrk
+
+  mail-service:
+    build: mail-service
+    image: fitness_mail-service:1.0.0
+    networks:
+      - fitness_ntwrk
+
+  audit-service:
+    build: audit-service
+    image: fitness_audit-service-0.1.0
+    networks:
+      - fitness_ntwrk
+
+  proxy:
+    build: proxy
+    image: fitness_proxy:1.0.0
+    ports:
+      - "8080:80"
+    networks:
+      - fitness_ntwrk
+networks:
+    fitness_ntwrk:
+      name: fitness_ntwrk
